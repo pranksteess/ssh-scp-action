@@ -43,7 +43,7 @@ executeSSH() {
 
   echo "$COMMANDS"
   #ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} $INPUT_USER@$INPUT_HOST "$COMMANDS"
-  ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} -A -tt $INPUT_BOARD_USER@$INPUT_BOARD_HOST sh "$INPUT_BOARD_SCRIPT $INPUT_DST_USER $INPUT_DST_HOST $INPUT_FILE_NAME $INPUT_DST_FILE_PATH $COMMANDS"
+  ssh -o StrictHostKeyChecking=no -p ${INPUT_BOARD_PORT:-22} -A -tt $INPUT_BOARD_USER@$INPUT_BOARD_HOST sh "$INPUT_BOARD_SCRIPT $INPUT_DST_USER $INPUT_DST_HOST $INPUT_FILE_NAME $INPUT_DST_FILE_PATH $COMMANDS"
 }
 
 executeSCP() {
@@ -67,7 +67,7 @@ executeSCP() {
 
 setupSSH
 echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
-executeSSH "$INPUT_SSH_BEFORE"
+#executeSSH "$INPUT_SSH_BEFORE"
 echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 echo "+++++++++++++++++++RUNNING SCP+++++++++++++++++++"
 executeSCP
