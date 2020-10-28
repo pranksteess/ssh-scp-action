@@ -70,7 +70,7 @@ echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_BEFORE"
 echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 echo "+++++++++++++++++++RUNNING SCP+++++++++++++++++++"
-executeSCP "$INPUT_SCP"
+executeSCP
 echo "+++++++++++++++++++RUNNING SCP+++++++++++++++++++"
 echo "+++++++++++++++++++RUNNING AFTER SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_AFTER"
