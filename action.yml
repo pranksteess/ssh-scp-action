@@ -2,19 +2,30 @@ name: 'SSH and SCP Setup'
 description: 'Executing remote ssh and scp commands'
 author: 'Ali Najafizadeh'
 inputs:
-  host:
+  dst_host:
     description: 'ssh remote host'
-  port:
+  dst_port:
     description: 'ssh remote port'
     default: 22
-  user:
+  dst_user:
     description: 'ssh user'
+  board_host:
+    description: 'ssh board host'
+  board_port:
+    description: 'ssh board port'
+    default: 22
+  board_user:
+    description: 'ssh board user'
+  file_name:
+    description: 'src file's name'
+  board_file_path:
+    description: 'temporary save path'
+  dst_file_path:
+    description: 'remote save path'
   key:
     description: 'content of ssh private key. ex raw content of ~/.ssh/id_rsa'
   ssh_before:
     description: 'execute commands before SCP'
-  scp:
-    description: 'scp local and remote'
   ssh_after:
     description: 'execute commands after SCP'
 runs:
