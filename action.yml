@@ -22,6 +22,8 @@ inputs:
     description: 'temporary save path'
   dst_file_path:
     description: 'remote save path'
+  board_script:
+    description: 'exec script in board to effect dst host'
   key:
     description: 'content of ssh private key. ex raw content of ~/.ssh/id_rsa'
   ssh_before:
