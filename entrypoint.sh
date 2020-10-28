@@ -17,7 +17,7 @@ setupSSH() {
   eval $(ssh-agent)
   ssh-add "$SSH_PATH/deploy_key"
 
-  ssh-keyscan -t rsa $INPUT_HOST >> "$SSH_PATH/known_hosts"
+  ssh-keyscan -t rsa $INPUT_BOARD_HOST >> "$SSH_PATH/known_hosts"
 }
 
 executeSSH() {
@@ -42,7 +42,8 @@ executeSSH() {
   done <<< $LINES
 
   echo "$COMMANDS"
-  ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} $INPUT_USER@$INPUT_HOST "$COMMANDS"
+  #ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} $INPUT_USER@$INPUT_HOST "$COMMANDS"
+  ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} -A -tt $INPUT_BOARD_USER@$INPUT_BOARD_HOST sh "$INPUT_BOARD_SCRIPT $INPUT_DST_USER $INPUT_DST_HOST $INPUT_FILE_NAME $INPUT_DST_FILE_PATH $COMMANDS"
 }
 
 executeSCP() {
@@ -59,7 +60,7 @@ executeSCP() {
     # scp will fail if COMMAND is empty, this condition protects scp
     if [[ $COMMAND = *[!\ ]* ]]; then
       echo "scp -r -o StrictHostKeyChecking=no $COMMAND"
-      scp -r -o StrictHostKeyChecking=no $COMMAND
+      scp -r -o StrictHostKeyChecking=no $INPUT_FILE_NAME $INPUT_BOARD_USER@$INPUT_BOARD_HOST:@$INPUT_BOARD_FILE_PATH
     fi
   done <<< $LINES
 }
