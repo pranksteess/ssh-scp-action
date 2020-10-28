@@ -58,10 +58,10 @@ executeSCP() {
     COMMAND=$(echo $LINE)
 
     # scp will fail if COMMAND is empty, this condition protects scp
-    if [[ $COMMAND = *[!\ ]* ]]; then
-      echo "scp -r -o StrictHostKeyChecking=no $COMMAND"
+    #if [[ $COMMAND = *[!\ ]* ]]; then
+      echo "scp -r -o StrictHostKeyChecking=no $INPUT_FILE_NAME $INPUT_BOARD_USER@$INPUT_BOARD_HOST:@$INPUT_BOARD_FILE_PATH"
       scp -r -o StrictHostKeyChecking=no $INPUT_FILE_NAME $INPUT_BOARD_USER@$INPUT_BOARD_HOST:@$INPUT_BOARD_FILE_PATH
-    fi
+    #fi
   done <<< $LINES
 }
 
