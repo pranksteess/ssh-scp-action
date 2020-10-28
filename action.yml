@@ -17,7 +17,7 @@ inputs:
   board_user:
     description: 'ssh board user'
   file_name:
-    description: 'src file's name'
+    description: 'src file\'s name'
   board_file_path:
     description: 'temporary save path'
   dst_file_path:
